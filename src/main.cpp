@@ -10,7 +10,7 @@ int main(const int argc, char *args[])
 
     bst Binary_Search_Tree(argc, args);
 
-    // Binary_Search_Tree.reorder_binary_tree();
+    Binary_Search_Tree.printBinaryTree();
 
     test();
 

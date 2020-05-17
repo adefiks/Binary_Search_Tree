@@ -18,9 +18,11 @@ private:
     vector<node> nodes;
     int getData(char *arg);
     tuple<int, int> test(int, int);
+    void printNode(node *ptr);
 
 public:
     bst(const int argc, char *args[]);
     ~bst();
-    void reorder_binary_tree();
+    void addToBinaryTree(int data);
+    void printBinaryTree();
 };

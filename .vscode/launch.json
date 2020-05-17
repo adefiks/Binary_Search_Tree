@@ -11,12 +11,20 @@
             "program": "${workspaceFolder}/Binary_Search_Tree",
             "args": [
                 8,
-                4,
-                2,
-                3,
                 6,
-                13,
-                14
+                4,
+                7,
+                14,
+                12,
+                11
+                // 8,
+                // 4,
+                // 2,
+                // 3,
+                // 6,
+                // 13,
+                // 14,
+                // 11
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

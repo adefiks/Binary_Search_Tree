@@ -2,46 +2,20 @@
 
 bst::bst(const int argc, char *args[])
 {
-    for (int i = 1; i < argc; i++)
+    if (argc > 1)
     {
+        // add root
         nodes.emplace_back();
-        nodes[i - 1].data = bst::getData(args[i]);
+        nodes[0].data = bst::getData(args[1]);
 
-        cout << "node[" << i << "]:" << nodes[i - 1].data << endl;
-    }
-
-    for (size_t i = 1; i < nodes.size(); i++)
-    {
-        // root -> nodes[0]
-        auto ptr = &nodes[0];
-
-        while (true)
+        for (int i = 2; i < argc; i++)
         {
-            if (nodes[i].data <= ptr->data)
-            {
-                if (ptr->left == nullptr)
-                {
-                    ptr->left = &nodes[i];
-                    break;
-                }
-                else
-                {
-                    ptr = ptr->left;
-                }
-            }
-            else
-            {
-                if (ptr->right == nullptr)
-                {
-                    ptr->right = &nodes[i];
-                    break;
-                }
-                else
-                {
-                    ptr = ptr->right;
-                }
-            }
+            int data = bst::getData(args[i]);
+            bst::addToBinaryTree(data);
         }
+
+        // for (auto &&i : nodes)
+        //     cout << "node: " << i.data << endl;
     }
 }
 
@@ -60,25 +34,68 @@ int bst::getData(char *arg)
     return ret;
 }
 
-void bst::reorder_binary_tree()
+void bst::addToBinaryTree(int data)
 {
-    for (size_t i = 1; i < nodes.size(); i++)
+    if (nodes.empty())
     {
+        // add root
+        nodes.emplace_back();
+        nodes[0].data = data;
+        return;
+    }
 
-        while (nodes[i].right != nullptr)
-        {
-            /* code */
-        }
+    nodes.emplace_back();
+    nodes.back().data = data;
 
-        if (nodes[0].data >= nodes[i].data)
+    // root -> nodes[0]
+    auto ptr = &nodes[0];
+
+    while (true)
+    {
+        if (nodes.back().data <= ptr->data)
         {
-            nodes[0].left = &nodes[i];
+            if (ptr->left == nullptr)
+            {
+                ptr->left = &nodes.back();
+                break;
+            }
+            else
+                ptr = ptr->left;
         }
         else
         {
-            nodes[0].right = &nodes[i];
+            if (ptr->right == nullptr)
+            {
+                ptr->right = &nodes.back();
+                break;
+            }
+            else
+                ptr = ptr->right;
         }
     }
+}
 
-    cout << "node " << nodes[0].left->data << endl;
+void bst::printBinaryTree()
+{
+    if (nodes.empty())
+    {
+        cout << "Binary Tree Empty" << endl;
+    }
+    else
+    {
+        // root -> nodes[0]
+        auto ptr = &nodes[0];
+        bst::printNode(ptr);
+    }
+}
+
+void bst::printNode(node *ptr)
+{
+    if (ptr->left != nullptr)
+        bst::printNode(ptr->left);
+
+    if (ptr->right != nullptr)
+        bst::printNode(ptr->right);
+
+    cout << "node: " << ptr->data << endl;
 }
