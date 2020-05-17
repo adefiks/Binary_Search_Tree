@@ -9,7 +9,15 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/Binary_Search_Tree",
-            "args": [],
+            "args": [
+                8,
+                4,
+                2,
+                3,
+                6,
+                13,
+                14
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
