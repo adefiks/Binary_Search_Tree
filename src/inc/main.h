@@ -1,11 +1,6 @@
 #include <iostream>
 #include <string.h>
 
-void test()
-{
-    std::cout << "test" << std::endl;
-}
-
 void printStart(char *args)
 {
     std::cout << "Start ";

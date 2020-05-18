@@ -10,9 +10,18 @@ int main(const int argc, char *args[])
 
     bst Binary_Search_Tree(argc, args);
 
+    Binary_Search_Tree.addToBinaryTree(23);
     Binary_Search_Tree.printBinaryTree();
 
-    test();
+    auto testNode = Binary_Search_Tree.findNode(22);
+    if (testNode)
+        cout << "test node: " << testNode->data << endl;
 
+    Binary_Search_Tree.removeFromBinaryTree(22);
+
+    auto min = Binary_Search_Tree.findMin();
+    cout << "min: " << min->data << endl;
+
+    
     return 0;
 }

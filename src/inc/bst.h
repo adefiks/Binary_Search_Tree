@@ -19,10 +19,16 @@ private:
     int getData(char *arg);
     tuple<int, int> test(int, int);
     void printNode(node *ptr);
+    node *findMin(node *data);
+    node *findMax(node *data);
 
 public:
     bst(const int argc, char *args[]);
     ~bst();
     void addToBinaryTree(int data);
+    void removeFromBinaryTree(int data);
+    node *findNode(int data);
+    node *findMin();
+    node *findMax();
     void printBinaryTree();
 };

@@ -13,9 +13,6 @@ bst::bst(const int argc, char *args[])
             int data = bst::getData(args[i]);
             bst::addToBinaryTree(data);
         }
-
-        // for (auto &&i : nodes)
-        //     cout << "node: " << i.data << endl;
     }
 }
 
@@ -75,11 +72,115 @@ void bst::addToBinaryTree(int data)
     }
 }
 
+void bst::removeFromBinaryTree(int data)
+{
+
+    auto nodeToRemove = bst::findNode(data);
+    if (nodeToRemove)
+    {
+        if (nodeToRemove->left)
+        {
+            // auto minNode = bst::findMax(nodeToRemove->left);
+        }
+        else
+        {
+            /* code */
+        }
+    }
+    else
+    {
+        cout << "remove failed" << endl;
+    }
+}
+
+node *bst::findMin(node *data)
+{
+    if (data->left)
+        bst::findMin(data->left);
+    else
+        return data;
+}
+
+node *bst::findMin()
+{
+    if (nodes.empty())
+    {
+        cout << "Binary Tree is empty" << endl;
+        return nullptr;
+    }
+
+    auto ret = bst::findMin(&nodes[0]);
+    return ret;
+}
+
+node *bst::findMax(node *data)
+{
+    if (data->right)
+        bst::findMax(data->right);
+    else
+        return data;
+}
+
+node *bst::findMax()
+{
+    if (nodes.empty())
+    {
+        cout << "Binary Tree is empty" << endl;
+        return nullptr;
+    }
+
+    auto ret = bst::findMax(&nodes[0]);
+    return ret;
+}
+
+node *bst::findNode(int data)
+{
+    if (nodes.empty())
+    {
+        cout << "Binary Tree is empty" << endl;
+        return nullptr;
+    }
+    else
+    {
+        // root -> nodes[0]
+        auto ptr = &nodes[0];
+
+        while (true)
+        {
+            if (ptr->data == data)
+            {
+                return ptr;
+            }
+
+            if (data <= ptr->data)
+            {
+                if (ptr->left == nullptr)
+                {
+                    cout << "node not existing" << endl;
+                    return nullptr;
+                }
+                else
+                    ptr = ptr->left;
+            }
+            else
+            {
+                if (ptr->right == nullptr)
+                {
+                    cout << "node not existing" << endl;
+                    return nullptr;
+                }
+                else
+                    ptr = ptr->right;
+            }
+        }
+    }
+}
+
 void bst::printBinaryTree()
 {
     if (nodes.empty())
     {
-        cout << "Binary Tree Empty" << endl;
+        cout << "Binary Tree is empty" << endl;
     }
     else
     {
